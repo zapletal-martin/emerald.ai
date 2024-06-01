@@ -1,5 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
+import httpx
+import asyncio
 
 router = APIRouter()
 
@@ -9,15 +11,23 @@ class InputRequest(BaseModel):
 class InputResponse(BaseModel):
     response: str
 
+Url = "http://httpbin.org/uuid"
+
+
 def api() -> APIRouter:
 
     @router.post("/input", response_model=InputResponse)
-    def input(request: InputRequest) -> InputResponse:
+    async def input(request: InputRequest) -> InputResponse:
         """
         Manual input news source
         """
 
-        return InputResponse(response="Ok")
-
+        resp = await gpt_request()
+        return InputResponse(response=resp)
     return router
+
+async def gpt_request():
+    async with httpx.AsyncClient() as client:
+        response = await client.get(Url)
+        return response.text
 
