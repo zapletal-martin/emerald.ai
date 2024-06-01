@@ -7,11 +7,10 @@ authors = [""]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "<3.13,>=3.10"
 httpx = "^0.25.2"
 fastapi = {version = "^0.104.1", optional = true}
 uvicorn = {version = "^0.24.0.post1", optional = true}
-httpx = "^0.25.2"
 
 
 [build-system]

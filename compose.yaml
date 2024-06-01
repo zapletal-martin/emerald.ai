@@ -1,0 +1,16 @@
+services:
+  memgpt_db:
+    extends:
+      file: ../MemGPT/compose.yaml
+      service: memgpt_db
+  memgpt_server:
+    extends:
+      file: ../MemGPT/compose.yaml
+      service: memgpt_server
+  memgpt_nginx:
+    extends:
+      file: ../MemGPT/compose.yaml
+      service: memgpt_nginx
+  emerald_news:
+    image: emerald.ai::v0.1
+
