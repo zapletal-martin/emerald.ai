@@ -13,7 +13,6 @@ class InputResponse(BaseModel):
 
 Url = "http://httpbin.org/uuid"
 
-
 def api() -> APIRouter:
 
     @router.post("/input", response_model=InputResponse)

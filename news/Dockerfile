@@ -10,6 +10,12 @@ ENV POETRY_NO_INTERACTION=1 \
 WORKDIR /app
 
 COPY pyproject.toml ./
+RUN poetry install
 RUN poetry lock --no-update
+COPY ./ ./
 
-CMD ./scripts/start.sh
+EXPOSE 8087
+
+WORKDIR /app/scripts
+
+CMD ./start.sh

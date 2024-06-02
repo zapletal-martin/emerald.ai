@@ -1,19 +1,20 @@
 [tool.poetry]
 
-name = "emerald.ai"
+name = "news"
 version = "0.1.0"
-description = "Project Emerald"
+description = "Project Emerald News"
 authors = [""]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "<3.13,>=3.10"
 httpx = "^0.25.2"
-fastapi = {version = "^0.104.1", optional = true}
-uvicorn = {version = "^0.24.0.post1", optional = true}
-
+fastapi = "^0.104.1"
+uvicorn = "^0.24.0.post1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.poetry.scripts]
+start = "news.server:start"
